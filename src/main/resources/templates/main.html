@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <form method="post">
+        <input type="text" name="text" placeholder="текст"/>
+        <input type="text" name="tag" placeholder="тэг"/>
+        <button type="submit">Добавить</button>
+    </form>
+    <form method="post" action="filter">
+        <input type="text" name="tag" placeholder="фильтр"/>
+        <button type="submit">Отправить</button>
+    </form>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th> Text </th>
+        <th> Tag </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${messages.empty}">
+        <td colspan="2"> No messages available </td>
+    </tr>
+    <tr th:each="book : ${messages}">
+        <td><span th:text="${book.id}"> Id </span></td>
+        <td><span th:text="${book.text}"> Text </span></td>
+        <td><span th:text="${book.tag}"> Tag </span></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
